@@ -1,0 +1,40 @@
+.grid-container {
+    column-count: 4;
+    column-gap: 0.5em;
+}
+
+#mySidebar {
+    width: 15rem;
+}
+
+#wrapper {
+    margin-left: 15rem;
+}
+
+#joke {
+    width: 90%
+}
+
+.grid-item {
+    display: inline-block;
+    width: 100%;
+    margin: 0.5em 0 0;
+
+}
+
+/* Mobile */
+@media (max-width:480px) {
+    .grid-container {column-count: 1;}
+}
+/* Tablet  or mobile landscape*/
+@media (max-width:839px) and (min-width:480px) {
+    .grid-container {column-count: 2;}
+}
+/* Medium device */
+@media (max-width:1024px) and (min-width:839px) {
+    .grid-container {column-count: 3;}
+}
+/* Big screens */
+@media (min-width:1024px) {
+    .grid-container {column-count: 4;}
+}

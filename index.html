@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <div class="w3-sidebar w3-display-container w3-bar-block w3-card w3-animate-left" style="display:block" id="mySidebar">
+            <ul class="w3-ul">
+                <li>
+                    <button class="w3-bar-item w3-button w3-large"
+                            onclick="nav_close()">
+                        Close &times;
+                    </button>
+                </li>
+                <li ng-repeat="(key,val) in categories">
+                    <a class="w3-bar-item w3-button" href="#" ng-click="switchCategory(key)">
+                        {{key}}
+                    </a>
+                </li>
+            </ul>
+            <div class="w3-display-bottommiddle w3-margin-bottom" id="joke">
+                <img src="{{gif}}" width="100%"/>
+            </div>
+        </div>
+
+        <div id="wrapper">
+            <div class="w3-teal w3-bar">
+                <button class="w3-bar-item w3-button w3-teal" onclick="nav_open()" id="openNav">
+                    <h2>&#9776;</h2>
+                </button>
+                <div class="w3-bar-item">
+                    <h2>{{currentCategory.title}}</h2>
+                </div>
+            </div>
+
+            <div class="w3-container">
+                <div class="w3-container w3-margin ng-scope w3-center w3-jumbo" ng-if="loading">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+                <div class="grid-container" ng-if="!loading">
+                    <div class="grid-item"
+                            ng-repeat="x in currentCategory.data">
+                        <div class="w3-card" style="margin:0px">
+                            <div class="w3-container w3-center">
+                                <h3>{{x.Name}}</h3>
+                            </div>
+                            <div class="w3-container">
+                                <ul class="w3-ul">
+                                    <li ng-repeat="(key,value) in x"
+                                        ng-if="key!='Name'">
+                                        {{key}} : {{value}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
